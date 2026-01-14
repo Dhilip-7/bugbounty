@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="google-site-verification" content="LrFuU9MCsJ619gmixamCFDb32DboLPi6HgL2tgOPaOA" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Bug Bounty Roadmap</title>
+  <meta name="description"
+    content="A comprehensive, free Bug Bounty roadmap. Learn from free resources, practice on real platforms, and become a successful bug bounty hunter. No expensive courses needed." />
+  <meta name="keywords"
+    content="bug bounty, cybersecurity, hacking, penetration testing, web security, OWASP, free resources" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Fira+Code:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Click to start overlay for audio initialization -->
+  <div class="start-overlay" id="start-overlay">
+    <div class="start-content">
+      <div class="start-terminal">
+        <div class="start-header">
+          <span class="blink-fast">[</span> TERMINAL READY <span class="blink-fast">]</span>
+        </div>
+        <div class="start-ascii">
+ ██████╗ ██╗   ██╗ ██████╗     ██╗  ██╗██╗   ██╗███╗   ██╗████████╗███████╗██████╗ 
+██╔══██╗██║   ██║██╔════╝     ██║  ██║██║   ██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗
+██████╔╝██║   ██║██║  ███╗    ███████║██║   ██║██╔██╗ ██║   ██║   █████╗  ██████╔╝
+██╔══██╗██║   ██║██║   ██║    ██╔══██║██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗
+██████╔╝╚██████╔╝╚██████╔╝    ██║  ██║╚██████╔╝██║ ╚████║   ██║   ███████╗██║  ██║
+╚═════╝  ╚═════╝  ╚═════╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+        </div>
+        <div class="start-message">
+          <span class="typed-prompt">> </span>
+          <span class="start-text">System requires authentication to initialize terminal...</span>
+        </div>
+        <button class="start-button" id="start-button">
+          <span class="btn-bracket">[</span>
+          <span class="btn-content">CLICK TO INITIALIZE SYSTEM</span>
+          <span class="btn-bracket">]</span>
+        </button>
+        <div class="start-hint">
+          <span class="hint-icon">♪</span> Audio enabled for immersive terminal experience
+        </div>
+      </div>
+      <div class="start-scanline"></div>
+    </div>
+  </div>
+
+  <!-- Added boot screen overlay for terminal startup effect -->
+  <div class="boot-screen" id="boot-screen">
+    <div class="boot-content">
+      <div class="boot-logo">[ SYSTEM INITIALIZING ]</div>
+      <div class="boot-text">
+        <span class="boot-line">> Loading kernel modules...</span>
+        <span class="boot-line">> Initializing network interfaces...</span>
+        <span class="boot-line">> Starting security protocols...</span>
+        <span class="boot-line">> Establishing secure connection...</span>
+        <span class="boot-line success">> ACCESS GRANTED</span>
+      </div>
+      <div class="boot-progress">
+        <div class="boot-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Added matrix rain canvas background -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- Added floating terminal windows decoration -->
+  <div class="floating-terminals">
+    <div class="mini-terminal t1">
+      <div class="mini-terminal-header">root@kali:~#</div>
+      <div class="mini-terminal-content">nmap -sV target.com</div>
+    </div>
+    <div class="mini-terminal t2">
+      <div class="mini-terminal-header">$</div>
+      <div class="mini-terminal-content">sqlmap -u "url" --dbs</div>
+    </div>
+    <div class="mini-terminal t3">
+      <div class="mini-terminal-header">[burp]</div>
+      <div class="mini-terminal-content">Intercepting...</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <!-- Enhanced logo with typing effect container -->
+      <a href="#" class="nav-logo">
+        <span class="terminal-prompt">robin@hunter:~$</span>
+        <span class="logo-text typing-effect">BugHunter<span class="accent">Roadmap</span></span>
+        <span class="cursor-blink">_</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#reality" class="nav-link" data-sound="click">Reality Check</a></li>
+        <li><a href="#mindset" class="nav-link" data-sound="click">Mindset</a></li>
+        <li><a href="#roadmap" class="nav-link" data-sound="click">Roadmap</a></li>
+        <li><a href="#tools" class="nav-link" data-sound="click">Tools</a></li>
+        <li><a href="#hunters" class="nav-link" data-sound="click">Hunters</a></li>
+        <li><a href="#resources" class="nav-link" data-sound="click">Resources</a></li>
+      </ul>
+      <!-- Added system status indicator -->
+      <div class="system-status">
+        <span class="status-dot"></span>
+        <span class="status-text">ONLINE</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section - Restructured as Terminal Interface -->
+  <header class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <!-- Added scan lines overlay -->
+    <div class="scan-lines"></div>
+    
+    <div class="hero-content">
+      <!-- Restructured hero with terminal window frame -->
+      <div class="terminal-window hero-terminal">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="btn-close"></span>
+            <span class="btn-minimize"></span>
+            <span class="btn-maximize"></span>
+          </div>
+          <div class="terminal-title">bug_bounty_init.sh</div>
+          <div class="terminal-controls">
+            <span class="control-icon">[ ]</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="hero-badge glitch-hover">
+            <span class="badge-icon">[!]</span>
+            100% Free Resources
+          </div>
+          <h1 class="hero-title">
+            <span class="command-prefix">></span>
+            Your Bug Bounty Journey
+            <span class="gradient-text glitch" data-text="Starts Here">Starts Here</span>
+          </h1>
+          <p class="hero-subtitle typewriter">
+            No expensive courses. No gatekeeping. Just real skills, free resources, and honest advice from the trenches.
+          </p>
+          <div class="hero-cta">
+            <a href="#reality" class="btn btn-primary cyber-btn" data-sound="click">
+              <span class="btn-glitch"></span>
+              <span class="btn-text">> Start Your Journey</span>
+            </a>
+            <a href="#roadmap" class="btn btn-secondary cyber-btn" data-sound="click">
+              <span class="btn-glitch"></span>
+              <span class="btn-text">./view_roadmap</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restructured stats as system monitors -->
+      <div class="hero-stats system-monitors">
+        <div class="stat monitor-box">
+          <div class="monitor-header">RESOURCES.db</div>
+          <span class="stat-number counter" data-target="50">0</span>
+          <span class="stat-label">Free Resources</span>
+          <div class="monitor-graph"></div>
+        </div>
+        <div class="stat monitor-box">
+          <div class="monitor-header">STAGES.conf</div>
+          <span class="stat-number">7</span>
+          <span class="stat-label">Learning Stages</span>
+          <div class="monitor-graph"></div>
+        </div>
+        <div class="stat monitor-box">
+          <div class="monitor-header">POTENTIAL.max</div>
+          <span class="stat-number infinity-pulse">∞</span>
+          <span class="stat-label">Your Potential</span>
+          <div class="monitor-graph"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span class="scroll-text">> scroll_down --explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </header>
+
+  <!-- Reality Check Section - Restructured as Warning Logs -->
+  <section class="section reality-section" id="reality">
+    <div class="container">
+      <!-- Added terminal frame around section -->
+      <div class="section-terminal-frame">
+        <div class="frame-corner top-left"></div>
+        <div class="frame-corner top-right"></div>
+        <div class="frame-corner bottom-left"></div>
+        <div class="frame-corner bottom-right"></div>
+        
+        <div class="section-header">
+          <div class="section-badge warning-badge">
+            <span class="warning-icon">[!]</span>
+            Let's Be Honest
+          </div>
+          <h2 class="section-title">
+            <span class="title-decoration">###</span>
+            The Reality Check
+            <span class="title-decoration">###</span>
+          </h2>
+          <p class="section-subtitle">> cat /var/log/reality.txt | What nobody tells you when you're starting out</p>
+        </div>
+
+        <!-- Restructured reality cards as log entries in a bento-style grid -->
+        <div class="reality-grid bento-grid">
+          <div class="reality-card log-entry large">
+            <div class="log-header">
+              <span class="log-type warning">[WARN]</span>
+              <span class="log-timestamp">sys.init</span>
+            </div>
+            <div class="reality-icon">💸</div>
+            <h3>You Don't Need Expensive Courses</h3>
+            <p>Everything you need is available for free. PortSwigger Academy, YouTube tutorials, documentation. Save your
+              money for a good setup.</p>
+            <div class="log-footer">
+              <span class="log-id">#001</span>
+            </div>
+          </div>
+
+          <div class="reality-card log-entry">
+            <div class="log-header">
+              <span class="log-type info">[INFO]</span>
+              <span class="log-timestamp">time.wait</span>
+            </div>
+            <div class="reality-icon">⏳</div>
+            <h3>Your First Bounty Takes Time</h3>
+            <p>Months, not days. The hunters you see earning big started years ago. Focus on learning, not earning—at
+              first.</p>
+            <div class="log-footer">
+              <span class="log-id">#002</span>
+            </div>
+          </div>
+
+          <div class="reality-card log-entry">
+            <div class="log-header">
+              <span class="log-type stats">[STAT]</span>
+              <span class="log-timestamp">ratio.calc</span>
+            </div>
+            <div class="reality-icon">📊</div>
+            <h3>90% Learning, 10% Earning</h3>
+            <p>Most of your time will be spent learning new techniques, reading writeups, and practicing in labs. That's
+              normal.</p>
+            <div class="log-footer">
+              <span class="log-id">#003</span>
+            </div>
+          </div>
+
+          <div class="reality-card log-entry">
+            <div class="log-header">
+              <span class="log-type error">[STOP]</span>
+              <span class="log-timestamp">compare.deny</span>
+            </div>
+            <div class="reality-icon">🚫</div>
+            <h3>Stop Comparing Bounties</h3>
+            <p>Someone's $10k bounty doesn't diminish your $50 one. Everyone's journey is different. Celebrate your wins.</p>
+            <div class="log-footer">
+              <span class="log-id">#004</span>
+            </div>
+          </div>
+
+          <div class="reality-card log-entry">
+            <div class="log-header">
+              <span class="log-type debug">[DUPE]</span>
+              <span class="log-timestamp">learn.mode</span>
+            </div>
+            <div class="reality-icon">📝</div>
+            <h3>Duplicates Are Learning</h3>
+            <p>Getting a duplicate hurts, but it means you're finding real bugs. Learn from it, refine your approach, move
+              faster next time.</p>
+            <div class="log-footer">
+              <span class="log-id">#005</span>
+            </div>
+          </div>
+
+          <div class="reality-card log-entry large">
+            <div class="log-header">
+              <span class="log-type success">[OK]</span>
+              <span class="log-timestamp">habit.build</span>
+            </div>
+            <div class="reality-icon">🔄</div>
+            <h3>Consistency Beats Intensity</h3>
+            <p>1 hour daily beats 10 hours once a week. Build the habit. Show up every single day, even when motivation
+              fades.</p>
+            <div class="log-footer">
+              <span class="log-id">#006</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hunter's Mindset Section - Restructured as Command Manual -->
+  <section class="section mindset-section" id="mindset">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge command-badge">
+          <span class="command-icon">$</span>
+          Pro Hunter Tips
+        </div>
+        <h2 class="section-title">
+          <span class="title-decoration">===</span>
+          The Hunter's Mindset
+          <span class="title-decoration">===</span>
+        </h2>
+        <p class="section-subtitle">> man hunter_methodology | What separates successful hunters from the rest</p>
+      </div>
+
+      <!-- Restructured mindset cards as command manual entries -->
+      <div class="mindset-grid command-grid">
+        <div class="mindset-card command-card">
+          <div class="command-number">
+            <span class="num-prefix">cmd_</span>01
+          </div>
+          <div class="card-content">
+            <h3>One Target, 100+ Hours</h3>
+            <p>Pick ONE program. Learn it inside out. Map every endpoint, understand every feature. Depth beats breadth.
+              Don't hop between targets.</p>
+            <div class="mindset-tip">
+              <span class="tip-icon">[TIP]</span>
+              Become the expert on YOUR target
+            </div>
+          </div>
+          <div class="command-line">$ focus --target=single --hours=100+</div>
+        </div>
+
+        <div class="mindset-card command-card">
+          <div class="command-number">
+            <span class="num-prefix">cmd_</span>02
+          </div>
+          <div class="card-content">
+            <h3>Read Reports Daily</h3>
+            <p>HackerOne Hacktivity is your daily newspaper. Read disclosed reports every single day. Understand what gets
+              paid, how it's written, what the impact is.</p>
+            <div class="mindset-tip">
+              <span class="tip-icon">[TIP]</span>
+              Set a daily goal: 5 reports minimum
+            </div>
+          </div>
+          <div class="command-line">$ crontab -e "0 9 * * * read_reports"</div>
+        </div>
+
+        <div class="mindset-card command-card">
+          <div class="command-number">
+            <span class="num-prefix">cmd_</span>03
+          </div>
+          <div class="card-content">
+            <h3>Take Proper Notes</h3>
+            <p>Document everything. Every technique, every bypass, every failed attempt. Your notes are your second brain.
+              Use Notion, Obsidian, or plain text.</p>
+            <div class="mindset-tip">
+              <span class="tip-icon">[TIP]</span>
+              Create a personal methodology document
+            </div>
+          </div>
+          <div class="command-line">$ vim ~/notes/methodology.md</div>
+        </div>
+
+        <div class="mindset-card command-card">
+          <div class="command-number">
+            <span class="num-prefix">cmd_</span>04
+          </div>
+          <div class="card-content">
+            <h3>Read Writeups Religiously</h3>
+            <p>Study how others found bugs. Pentester Land, Medium, personal blogs. Understand the thought process, not
+              just the payload.</p>
+            <div class="mindset-tip">
+              <span class="tip-icon">[TIP]</span>
+              Bookmark and categorize great writeups
+            </div>
+          </div>
+          <div class="command-line">$ curl -s writeups.io | grep -i "critical"</div>
+        </div>
+
+        <div class="mindset-card command-card">
+          <div class="command-number">
+            <span class="num-prefix">cmd_</span>05
+          </div>
+          <div class="card-content">
+            <h3>Don't Get Distracted</h3>
+            <p>New programs look shiny. Resist the urge to jump. Scattered effort = zero results. Finish what you started.
+              Master before moving.</p>
+            <div class="mindset-tip">
+              <span class="tip-icon">[TIP]</span>
+              Block new program announcements if needed
+            </div>
+          </div>
+          <div class="command-line">$ kill -9 $(pgrep distractions)</div>
+        </div>
+
+        <div class="mindset-card command-card">
+          <div class="command-number">
+            <span class="num-prefix">cmd_</span>06
+          </div>
+          <div class="card-content">
+            <h3>Quality Over Quantity</h3>
+            <p>One well-written report beats ten rushed ones. Understand the impact, explain clearly, provide solid PoC.
+              Make triagers' lives easy.</p>
+            <div class="mindset-tip">
+              <span class="tip-icon">[TIP]</span>
+              Study top-rated public reports
+            </div>
+          </div>
+          <div class="command-line">$ report --quality=max --poc=detailed</div>
+        </div>
+
+        <div class="mindset-card command-card">
+          <div class="command-number">
+            <span class="num-prefix">cmd_</span>07
+          </div>
+          <div class="card-content">
+            <h3>Learn From Rejections</h3>
+            <p>N/A? Duplicate? Info? Ask why. Understand the reasoning. Every rejection teaches you something. Keep a
+              lessons-learned log.</p>
+            <div class="mindset-tip">
+              <span class="tip-icon">[TIP]</span>
+              Track all your submissions and outcomes
+            </div>
+          </div>
+          <div class="command-line">$ tail -f /var/log/rejections.log</div>
+        </div>
+
+        <div class="mindset-card command-card">
+          <div class="command-number">
+            <span class="num-prefix">cmd_</span>08
+          </div>
+          <div class="card-content">
+            <h3>Build Your Methodology</h3>
+            <p>Don't copy checklists blindly. Build your own based on what works for YOU. Test it, refine it, evolve it.
+              Make it yours.</p>
+            <div class="mindset-tip">
+              <span class="tip-icon">[TIP]</span>
+              Update it after every finding
+            </div>
+          </div>
+          <div class="command-line">$ ./build_methodology.sh --iterate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning Roadmap Section - Restructured as System Pipeline -->
+  <section class="section roadmap-section" id="roadmap">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge pipeline-badge">
+          <span class="pipeline-icon">[>>>]</span>
+          The Path
+        </div>
+        <h2 class="section-title">
+          <span class="title-decoration">|-|</span>
+          Learning Roadmap
+          <span class="title-decoration">|-|</span>
+        </h2>
+        <p class="section-subtitle">> ./roadmap.sh --start=zero --end=hunter | All with free resources</p>
+      </div>
+
+      <!-- Restructured roadmap as data pipeline -->
+      <div class="roadmap-container pipeline-container">
+        <div class="pipeline-line"></div>
+        
+        <!-- Stage 1 -->
+        <div class="roadmap-stage pipeline-node">
+          <div class="stage-marker node-marker">
+            <span class="stage-number">1</span>
+            <div class="node-pulse"></div>
+          </div>
+          <div class="stage-content node-content">
+            <div class="node-header">
+              <div class="node-status active"></div>
+              <h3>Networking & Web Fundamentals</h3>
+              <span class="stage-duration">[2-4 weeks]</span>
+            </div>
+            <p>Understand how the internet works. HTTP/HTTPS, DNS, TCP/IP, and web technologies are your foundation.</p>
+            <div class="stage-resources resource-links">
+              <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" target="_blank"
+                class="resource-chip">MDN HTTP Overview</a>
+              <a href="https://youtube.com/playlist?list=PLkW9FMxqUvyZaSQNQslneeODER3bJCb2K&si=UvaM6-OMbS5u31DJ"
+                target="_blank" class="resource-chip">Networking Basics (YT)</a>
+              <a href="https://www.w3schools.com/html/" target="_blank" class="resource-chip">W3Schools HTML/CSS/JS</a>
+              <a href="https://youtu.be/zZ6vybT1HQs?si=CZTy2AmtK-wmycmp" target="_blank" class="resource-chip">Learn
+                PHP</a>
+              <a href="https://youtu.be/_uQrJ0TkZlc?si=CV3Jb2EQ4KmXuVUN" target="_blank" class="resource-chip">Python
+                Tutorial</a>
+              <a href="https://youtu.be/tK9Oc6AEnR4?si=2c2D4GAuFgdz_x9_" target="_blank" class="resource-chip">Bash
+                Scripting</a>
+            </div>
+            <div class="data-flow">>>> PIPE TO STAGE 2 >>></div>
+          </div>
+        </div>
+
+        <!-- Stage 2 -->
+        <div class="roadmap-stage pipeline-node">
+          <div class="stage-marker node-marker">
+            <span class="stage-number">2</span>
+            <div class="node-pulse"></div>
+          </div>
+          <div class="stage-content node-content">
+            <div class="node-header">
+              <div class="node-status"></div>
+              <h3>Web Application Security</h3>
+              <span class="stage-duration">[3-6 weeks]</span>
+            </div>
+            <p>Learn how web apps break. OWASP Top 10 is your bible. Understand each vulnerability class deeply.</p>
+            <div class="stage-resources resource-links">
+              <a href="https://owasp.org/www-project-top-ten/" target="_blank" class="resource-chip">OWASP Top 10</a>
+              <a href="https://www.hacksplaining.com/" target="_blank" class="resource-chip">Hacksplaining</a>
+              <a href="https://www.udemy.com/share/1050Fc/" target="_blank" class="resource-chip">Web Security
+                Course</a>
+              <a href="https://github.com/djadmin/awesome-bug-bounty" target="_blank" class="resource-chip">Awesome Bug
+                Bounty</a>
+            </div>
+            <div class="data-flow">>>> PIPE TO STAGE 3 >>></div>
+          </div>
+        </div>
+
+        <!-- Stage 3 -->
+        <div class="roadmap-stage pipeline-node">
+          <div class="stage-marker node-marker">
+            <span class="stage-number">3</span>
+            <div class="node-pulse"></div>
+          </div>
+          <div class="stage-content node-content">
+            <div class="node-header">
+              <div class="node-status"></div>
+              <h3>Master Reconnaissance</h3>
+              <span class="stage-duration">[2-3 weeks]</span>
+            </div>
+            <p>Recon is 80% of the job. Learn to find hidden subdomains, endpoints, and attack surface others miss.</p>
+            <div class="stage-resources resource-links">
+              <a href="https://youtu.be/27s49iO4J4k?si=fLUSej3XVFgvkEes" target="_blank" class="resource-chip">Recon for
+                Bug Bounties</a>
+              <a href="https://reconftw.com/" target="_blank" class="resource-chip">ReconFTW</a>
+              <a href="https://github.com/OWASP/Amass" target="_blank" class="resource-chip">OWASP Amass</a>
+            </div>
+            <div class="data-flow">>>> PIPE TO STAGE 4 >>></div>
+          </div>
+        </div>
+
+        <!-- Stage 4 -->
+        <div class="roadmap-stage pipeline-node">
+          <div class="stage-marker node-marker">
+            <span class="stage-number">4</span>
+            <div class="node-pulse"></div>
+          </div>
+          <div class="stage-content node-content">
+            <div class="node-header">
+              <div class="node-status"></div>
+              <h3>Vulnerability Discovery</h3>
+              <span class="stage-duration">[Ongoing]</span>
+            </div>
+            <p>XSS, SQLi, SSRF, IDOR, CSRF—learn to find and exploit them. PortSwigger Academy is your best friend here.</p>
+            <div class="stage-resources resource-links">
+              <a href="https://portswigger.net/web-security/all-materials" target="_blank" class="resource-chip featured-chip">⭐
+                PortSwigger Academy</a>
+              <a href="https://www.hacker101.com/" target="_blank" class="resource-chip">Hacker101</a>
+              <a href="https://www.youtube.com/playlist?list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN" target="_blank"
+                class="resource-chip">Web Vulns Playlist</a>
+            </div>
+            <div class="data-flow">>>> PIPE TO STAGE 5 >>></div>
+          </div>
+        </div>
+
+        <!-- Stage 5 -->
+        <div class="roadmap-stage pipeline-node">
+          <div class="stage-marker node-marker">
+            <span class="stage-number">5</span>
+            <div class="node-pulse"></div>
+          </div>
+          <div class="stage-content node-content">
+            <div class="node-header">
+              <div class="node-status"></div>
+              <h3>Tool Mastery</h3>
+              <span class="stage-duration">[2-4 weeks]</span>
+            </div>
+            <p>Learn your tools inside out. Burp Suite is essential. But also know when to build your own.</p>
+            <div class="stage-resources resource-links">
+              <a href="https://youtube.com/playlist?list=PLa2xctTiNSCjVzFfxTn_UKkd-sS34EQaF&si=-3-HeOuc8yWexqqx"
+                target="_blank" class="resource-chip">Burp Suite (Hindi)</a>
+              <a href="https://youtu.be/slxHpp7ilYU?si=oNUwu-NFeoemYo-T" target="_blank" class="resource-chip">Burp
+                Suite (English)</a>
+              <a href="https://youtube.com/playlist?list=PLH8n_ayg-60J9i3nsLybper-DR3zJw6Z5&si=pGrg1fTWBtl2UvF0"
+                target="_blank" class="resource-chip">OWASP ZAP Tutorial</a>
+              <a href="https://youtu.be/4WqymtvuWZQ?si=5lR_paYeOIOlSvEQ" target="_blank" class="resource-chip">Top BB
+                Tools</a>
+            </div>
+            <div class="data-flow">>>> PIPE TO STAGE 6 >>></div>
+          </div>
+        </div>
+
+        <!-- Stage 6 -->
+        <div class="roadmap-stage pipeline-node">
+          <div class="stage-marker node-marker">
+            <span class="stage-number">6</span>
+            <div class="node-pulse"></div>
+          </div>
+          <div class="stage-content node-content">
+            <div class="node-header">
+              <div class="node-status"></div>
+              <h3>Advanced Techniques</h3>
+              <span class="stage-duration">[Ongoing]</span>
+            </div>
+            <p>Mobile security, API testing, source code review, advanced recon. Never stop leveling up.</p>
+            <div class="stage-resources resource-links">
+              <a href="https://www.udemy.com/share/1074hk/" target="_blank" class="resource-chip">Advanced BB
+                Hunting</a>
+              <a href="https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters" target="_blank"
+                class="resource-chip">NahamSec Resources</a>
+              <a href="https://youtube.com/playlist?list=PLF7JR1a3dLONdkRYU_8-5OcgOzrWe2549&si=nDEeBVxbzcOsYMX5"
+                target="_blank" class="resource-chip">STÖK (Advanced)</a>
+              <a href="https://youtube.com/playlist?list=PLbyncTkpno5FaAbJJ7YHvMY9wtJ9fyqCH&si=KcLrPXJA1eaTQlt0"
+                target="_blank" class="resource-chip">InsiderPhD Series</a>
+            </div>
+            <div class="data-flow">>>> PIPE TO STAGE 7 >>></div>
+          </div>
+        </div>
+
+        <!-- Stage 7 -->
+        <div class="roadmap-stage pipeline-node final-node">
+          <div class="stage-marker node-marker">
+            <span class="stage-number">7</span>
+            <div class="node-pulse"></div>
+          </div>
+          <div class="stage-content node-content">
+            <div class="node-header">
+              <div class="node-status"></div>
+              <h3>Practice, Practice, Practice</h3>
+              <span class="stage-duration">[Forever]</span>
+            </div>
+            <p>Theory without practice is useless. CTFs, labs, and real programs. Get your hands dirty.</p>
+            <div class="stage-resources resource-links">
+              <a href="https://www.hackthebox.com/" target="_blank" class="resource-chip">Hack The Box</a>
+              <a href="https://tryhackme.com/" target="_blank" class="resource-chip">TryHackMe</a>
+              <a href="https://github.com/winterrdog/tryhackme-free-rooms" target="_blank" class="resource-chip">400+
+                Free THM Rooms</a>
+              <a href="https://ctf.hacker101.com" target="_blank" class="resource-chip">Hacker101 CTF</a>
+              <a href="https://pentesterlab.com/" target="_blank" class="resource-chip">PentesterLab</a>
+              <a href="https://ctftime.org/" target="_blank" class="resource-chip">CTFTime</a>
+            </div>
+            <div class="data-flow success-flow">>>> HUNTER_MODE_ACTIVATED >>></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Section - Restructured as Arsenal/Weapon Cache -->
+  <section class="section tools-section" id="tools">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge arsenal-badge">
+          <span class="arsenal-icon">[*]</span>
+          Arsenal
+        </div>
+        <h2 class="section-title">
+          <span class="title-decoration"><<</span>
+          Essential Tools
+          <span class="title-decoration">>></span>
+        </h2>
+        <p class="section-subtitle">> ls -la /usr/share/tools/ | Your weapons of choice—most are free and open source</p>
+      </div>
+
+      <!-- Restructured tools as hexagonal weapon cache -->
+      <div class="tools-grid weapon-grid">
+        <a href="https://portswigger.net/burp" target="_blank" class="tool-card weapon-card">
+          <div class="weapon-glow"></div>
+          <div class="tool-icon">🔥</div>
+          <h3>Burp Suite</h3>
+          <p>The #1 web vulnerability scanner. Community edition is free.</p>
+          <span class="tool-tag">Essential</span>
+          <div class="weapon-stats">
+            <span class="stat-bar full"></span>
+          </div>
+        </a>
+
+        <a href="https://caido.io/download" target="_blank" class="tool-card weapon-card">
+          <div class="weapon-glow"></div>
+          <div class="tool-icon">⚡</div>
+          <h3>Caido</h3>
+          <p>Modern, fast alternative to Burp. Beautiful GUI.</p>
+          <span class="tool-tag">Proxy</span>
+          <div class="weapon-stats">
+            <span class="stat-bar high"></span>
+          </div>
+        </a>
+
+        <a href="https://github.com/projectdiscovery/nuclei" target="_blank" class="tool-card weapon-card">
+          <div class="weapon-glow"></div>
+          <div class="tool-icon">☢️</div>
+          <h3>Nuclei</h3>
+          <p>High-performance vulnerability scanner with templates.</p>
+          <span class="tool-tag">Scanner</span>
+          <div class="weapon-stats">
+            <span class="stat-bar full"></span>
+          </div>
+        </a>
+
+        <a href="https://nmap.org/" target="_blank" class="tool-card weapon-card">
+          <div class="weapon-glow"></div>
+          <div class="tool-icon">📡</div>
+          <h3>Nmap</h3>
+          <p>Network discovery and security auditing.</p>
+          <span class="tool-tag">Recon</span>
+          <div class="weapon-stats">
+            <span class="stat-bar full"></span>
+          </div>
+        </a>
+
+        <a href="https://github.com/sqlmapproject/sqlmap" target="_blank" class="tool-card weapon-card">
+          <div class="weapon-glow"></div>
+          <div class="tool-icon">💉</div>
+          <h3>SQLMap</h3>
+          <p>Automated SQL injection and database takeover.</p>
+          <span class="tool-tag">Exploitation</span>
+          <div class="weapon-stats">
+            <span class="stat-bar high"></span>
+          </div>
+        </a>
+
+        <a href="https://github.com/aboul3la/Sublist3r" target="_blank" class="tool-card weapon-card">
+          <div class="weapon-glow"></div>
+          <div class="tool-icon">🔍</div>
+          <h3>Sublist3r</h3>
+          <p>Fast subdomain enumeration tool.</p>
+          <span class="tool-tag">Recon</span>
+          <div class="weapon-stats">
+            <span class="stat-bar medium"></span>
+          </div>
+        </a>
+
+        <a href="https://github.com/OWASP/Amass" target="_blank" class="tool-card weapon-card">
+          <div class="weapon-glow"></div>
+          <div class="tool-icon">🕸️</div>
+          <h3>OWASP Amass</h3>
+          <p>Advanced network mapping and asset discovery.</p>
+          <span class="tool-tag">Recon</span>
+          <div class="weapon-stats">
+            <span class="stat-bar high"></span>
+          </div>
+        </a>
+
+        <a href="https://www.metasploit.com/" target="_blank" class="tool-card weapon-card">
+          <div class="weapon-glow"></div>
+          <div class="tool-icon">🎯</div>
+          <h3>Metasploit</h3>
+          <p>World's most used penetration testing framework.</p>
+          <span class="tool-tag">Framework</span>
+          <div class="weapon-stats">
+            <span class="stat-bar full"></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practice Platforms Section -->
+  <section class="section practice-section" id="practice">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge game-badge">
+          <span class="game-icon">[>]</span>
+          Level Up
+        </div>
+        <h2 class="section-title">
+          <span class="title-decoration">::</span>
+          Practice Platforms
+          <span class="title-decoration">::</span>
+        </h2>
+        <p class="section-subtitle">> ./train --mode=hands_on | Knowledge without practice is useless. Get your hands dirty.</p>
+      </div>
+
+      <div class="practice-grid training-grid">
+        <a href="https://portswigger.net/web-security" target="_blank" class="practice-card training-card featured">
+          <div class="practice-badge">⭐ Start Here</div>
+          <div class="card-glitch-overlay"></div>
+          <h3>PortSwigger Academy</h3>
+          <p>Free, comprehensive web security training. Labs for every vulnerability type. This should be your first
+            stop.</p>
+          <span class="practice-tag">Free</span>
+          <div class="training-progress">
+            <div class="progress-bar"></div>
+          </div>
+        </a>
+
+        <a href="https://www.hackthebox.com/" target="_blank" class="practice-card training-card">
+          <div class="card-glitch-overlay"></div>
+          <h3>Hack The Box</h3>
+          <p>Realistic machines and challenges. Great for all skill levels.</p>
+          <span class="practice-tag">Freemium</span>
+        </a>
+
+        <a href="https://tryhackme.com/" target="_blank" class="practice-card training-card">
+          <div class="card-glitch-overlay"></div>
+          <h3>TryHackMe</h3>
+          <p>Beginner-friendly with guided learning paths.</p>
+          <span class="practice-tag">Freemium</span>
+        </a>
+
+        <a href="https://ctf.hacker101.com" target="_blank" class="practice-card training-card">
+          <div class="card-glitch-overlay"></div>
+          <h3>Hacker101 CTF</h3>
+          <p>HackerOne's official CTF. Earn private invites!</p>
+          <span class="practice-tag">Free</span>
+        </a>
+
+        <a href="https://pentesterlab.com/" target="_blank" class="practice-card training-card">
+          <div class="card-glitch-overlay"></div>
+          <h3>PentesterLab</h3>
+          <p>Hands-on exercises for web security.</p>
+          <span class="practice-tag">Freemium</span>
+        </a>
+
+        <a href="https://ctftime.org/" target="_blank" class="practice-card training-card">
+          <div class="card-glitch-overlay"></div>
+          <h3>CTFTime</h3>
+          <p>Find upcoming CTF competitions worldwide.</p>
+          <span class="practice-tag">Free</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hunters to Follow Section - Restructured as Network Nodes -->
+  <section class="section hunters-section" id="hunters">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge network-badge">
+          <span class="network-icon">[@]</span>
+          Learn From The Best
+        </div>
+        <h2 class="section-title">
+          <span class="title-decoration">{{</span>
+          Hunters to Follow
+          <span class="title-decoration">}}</span>
+        </h2>
+        <p class="section-subtitle">> nmap -sn hunter_network | These hunters share real knowledge. Follow them, study their work.</p>
+      </div>
+
+      <!-- Restructured hunters as network visualization -->
+      <div class="hunters-grid network-grid">
+        <a href="https://twitter.com/NahamSec" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">NahamSec</div>
+          <p>Streams live hacking, beginner-friendly content, created Resources for Beginners repo</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/staboratory" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">STÖK</div>
+          <p>High-quality YouTube content, motivational, focuses on mindset and methodology</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/InsiderPhD" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">InsiderPhD</div>
+          <p>Academic approach, great for beginners, "Zero to Hero" series</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/jhaddix" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">Jason Haddix</div>
+          <p>Recon god. His methodology talks are legendary. Must-watch for recon.</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/TomNomNom" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">TomNomNom</div>
+          <p>Tool creator (waybackurls, gf, httprobe). Learn from his simple, powerful tools.</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/Bugcrowd" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">Bugcrowd</div>
+          <p>Platform account with great tips, LevelUp conferences, and hunter spotlights</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/haaborsen" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">Frans Rosén</div>
+          <p>Deep technical writeups, innovative attack chains, creative exploitation</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/albaborsenova" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">Albina Safonova</div>
+          <p>Great writeups on complex vulns, API security specialist</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/0xpatrick" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">Patrick Hudak</div>
+          <p>Great at chains, hosts Bug Bounty Podcast, shares methodologies</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/Rhynorater" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">Justin Gardner (Rhynorater)</div>
+          <p>Critical Thinking Podcast, advanced techniques, automation</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/intigriti" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">Intigriti</div>
+          <p>Weekly challenges, educational content, great community</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/samaborsen" target="_blank" class="hunter-card network-node">
+          <div class="node-connection"></div>
+          <div class="hunter-avatar">@</div>
+          <div class="hunter-name">Sam Curry</div>
+          <p>Insane API/auth bugs, massive payouts, detailed blog posts</p>
+          <div class="hunter-ping">
+            <span class="ping-dot"></span>
+            <span class="ping-text">ACTIVE</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bonus Resources Section -->
+  <section class="section resources-section" id="resources">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge database-badge">
+          <span class="database-icon">[db]</span>
+          Resources
+        </div>
+        <h2 class="section-title">
+          <span class="title-decoration">/*</span>
+          Curated Learning Materials
+          <span class="title-decoration">*/</span>
+        </h2>
+        <p class="section-subtitle">> SELECT * FROM resources WHERE price = 'free' | The best free resources. No paid courses needed.</p>
+      </div>
+
+      <div class="resources-grid database-grid">
+        <!-- Documentation & Learning -->
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">📖 Documentation</span>
+            <span class="data-priority">Essential</span>
+          </div>
+          <h3>PortSwigger Web Security Academy</h3>
+          <p>THE gold standard. Free labs for every vulnerability. Complete this before anything else.</p>
+          <a href="https://portswigger.net/web-security" target="_blank" class="resource-link">> access --start</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">📖 Documentation</span>
+            <span class="data-priority">Essential</span>
+          </div>
+          <h3>OWASP Testing Guide</h3>
+          <p>Comprehensive testing methodology. Reference this when building your own approach.</p>
+          <a href="https://owasp.org/www-project-web-security-testing-guide/" target="_blank" class="resource-link">> read --guide</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">📖 Documentation</span>
+            <span class="data-priority">Reference</span>
+          </div>
+          <h3>HackTricks</h3>
+          <p>Massive wiki of hacking techniques. Bookmark this. You'll use it constantly.</p>
+          <a href="https://book.hacktricks.xyz/" target="_blank" class="resource-link">> browse --wiki</a>
+        </div>
+
+        <!-- Writeups & Blogs -->
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">✍️ Writeups</span>
+            <span class="data-priority">Learn</span>
+          </div>
+          <h3>Pentester Land Writeups</h3>
+          <p>Curated collection of the best bug bounty writeups. Study these religiously.</p>
+          <a href="https://pentester.land/list-of-bug-bounty-writeups.html" target="_blank" class="resource-link">> read --writeups</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">✍️ Writeups</span>
+            <span class="data-priority">HackerOne</span>
+          </div>
+          <h3>HackerOne Disclosed Reports</h3>
+          <p>Real vulnerabilities, real reports. See what actually gets paid.</p>
+          <a href="https://hackerone.com/hacktivity" target="_blank" class="resource-link">> view --hacktivity</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">✍️ Blog</span>
+            <span class="data-priority">Advanced</span>
+          </div>
+          <h3>PortSwigger Research</h3>
+          <p>Cutting-edge research from the Burp Suite team. New techniques published here first.</p>
+          <a href="https://portswigger.net/research" target="_blank" class="resource-link">> read --research</a>
+        </div>
+
+        <!-- GitHub Repos -->
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">🐙 GitHub</span>
+            <span class="data-priority">Beginner</span>
+          </div>
+          <h3>NahamSec's Resources for Beginners</h3>
+          <p>Curated list specifically for people just starting out. Start here.</p>
+          <a href="https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters" target="_blank"
+            class="resource-link">> git clone</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">🐙 GitHub</span>
+            <span class="data-priority">Payloads</span>
+          </div>
+          <h3>PayloadsAllTheThings</h3>
+          <p>Massive payload repository for every vulnerability type. Essential reference.</p>
+          <a href="https://github.com/swisskyrepo/PayloadsAllTheThings" target="_blank" class="resource-link">> get --payloads</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">🐙 GitHub</span>
+            <span class="data-priority">Wordlists</span>
+          </div>
+          <h3>SecLists</h3>
+          <p>The wordlist collection. Usernames, passwords, directories, subdomains—everything.</p>
+          <a href="https://github.com/danielmiessler/SecLists" target="_blank" class="resource-link">> download --seclists</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">🐙 GitHub</span>
+            <span class="data-priority">Awesome</span>
+          </div>
+          <h3>Awesome Bug Bounty</h3>
+          <p>Curated list of programs, tools, writeups, and resources.</p>
+          <a href="https://github.com/djadmin/awesome-bug-bounty" target="_blank" class="resource-link">> view --list</a>
+        </div>
+
+        <!-- Video Courses -->
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">🎥 Video Course</span>
+            <span class="data-priority">Hindi</span>
+          </div>
+          <h3>Bug Bounty Free Training</h3>
+          <p>Complete Bug Bounty course with live lectures. More classes being added regularly.</p>
+          <a href="https://youtube.com/playlist?list=PLOJR6EhNalnu7hgxu7QhA9GrF9i23JX9A&si=hjpS935rs3pcyf7V"
+            target="_blank" class="resource-link">> play --watch</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">🎥 Video Course</span>
+            <span class="data-priority">Hindi</span>
+          </div>
+          <h3>Bug Hunting Course (74+ Lectures)</h3>
+          <p>Comprehensive course covering everything from basics to advanced.</p>
+          <a href="https://youtube.com/playlist?list=PLJ18l2m4Gsa_d-WrmQYi6AcjQCxRZ0wG1&si=y7j02ykMPwT8XAMU"
+            target="_blank" class="resource-link">> play --watch</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">🎥 YouTube</span>
+            <span class="data-priority">English</span>
+          </div>
+          <h3>LiveOverflow</h3>
+          <p>Deep technical content. CTF walkthroughs, exploit development, security research.</p>
+          <a href="https://www.youtube.com/c/LiveOverflow" target="_blank" class="resource-link">> play --watch</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">🎥 YouTube</span>
+            <span class="data-priority">English</span>
+          </div>
+          <h3>John Hammond</h3>
+          <p>CTFs, malware analysis, and security tutorials. Great for building fundamentals.</p>
+          <a href="https://www.youtube.com/c/JohnHammond010" target="_blank" class="resource-link">> play --watch</a>
+        </div>
+
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">🎥 YouTube</span>
+            <span class="data-priority">English</span>
+          </div>
+          <h3>IppSec</h3>
+          <p>Hack The Box walkthroughs. Learn methodology by watching a pro work.</p>
+          <a href="https://www.youtube.com/c/ippsec" target="_blank" class="resource-link">> play --watch</a>
+        </div>
+
+        <!-- Podcasts -->
+        <div class="resource-card data-card">
+          <div class="data-card-header">
+            <span class="data-type">🎙️ Podcast</span>
+            <span class="data-priority">Listen</span>
+          </div>
+          <h3>Critical Thinking - Bug Bounty Podcast</h3>
+          <p>Justin Gardner and Joel Margolis discuss techniques, news, and interviews.</p>
+          <a href="https://www.criticalthinkingpodcast.io/" target="_blank" class="resource-link">> listen --now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Motivation Section -->
+  <section class="section motivation-section" id="motivation">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge fire-badge">
+          <span class="fire-icon">[!]</span>
+          Stay Strong
+        </div>
+        <h2 class="section-title">
+          <span class="title-decoration">!!!</span>
+          When You Want to Quit
+          <span class="title-decoration">!!!</span>
+        </h2>
+        <p class="section-subtitle">> cat /etc/motivation.conf | Remember why you started</p>
+      </div>
+
+      <div class="quotes-carousel quote-terminal">
+        <div class="quote-card terminal-quote">
+          <div class="quote-prompt">root@motivation:~#</div>
+          <blockquote>"The only way to become a master is to stay a student."</blockquote>
+          <p>Every challenge, every bounty, and every setback is an opportunity to learn something new.</p>
+        </div>
+
+        <div class="quote-card terminal-quote">
+          <div class="quote-prompt">root@motivation:~#</div>
+          <blockquote>"Exploits are hidden in plain sight—find the gaps, and you'll find the rewards."</blockquote>
+          <p>Most people stop just before they find that critical vulnerability. Keep going when others quit!</p>
+        </div>
+
+        <div class="quote-card terminal-quote">
+          <div class="quote-prompt">root@motivation:~#</div>
+          <blockquote>"If it was easy, everyone would do it."</blockquote>
+          <p>It's a battle of wits, and only the most persistent win.</p>
+        </div>
+
+        <div class="quote-card terminal-quote">
+          <div class="quote-prompt">root@motivation:~#</div>
+          <blockquote>"Success is not final, failure is not fatal: It is the courage to continue that counts."</blockquote>
+          <p class="quote-author">— Winston Churchill</p>
+        </div>
+      </div>
+
+      <div class="motivation-message final-message">
+        <div class="message-header">
+          <span class="message-icon">[BROADCAST]</span>
+          <span class="message-title">SYSTEM MESSAGE</span>
+        </div>
+        <h3>Your Effort Today = A Zero-Day Tomorrow</h3>
+        <p>Every time you're up late at night staring at code, testing payloads, or digging through HTTP responses,
+          you're inching closer to finding that critical vulnerability that could change your life.</p>
+        <p class="highlight">Keep hacking, keep learning, and never give up. The rewards are out there waiting for you.</p>
+        <div class="message-footer">
+          <span class="blink-text">> TRANSMISSION_COMPLETE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer terminal-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="terminal-prompt">$</span>
+            <span class="logo-text">BugHunter<span class="accent">Roadmap</span></span>
+          </div>
+          <p>> Your free path to becoming a bug bounty hunter.</p>
+          <div class="footer-ascii">
+            <pre>
+  ╔═══════════════════╗
+  ║   HACK THE PLANET ║
+  ╚═══════════════════╝
+            </pre>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>> Connect</h4>
+          <ul>
+            <li><a href="https://github.com/dhilip-7" target="_blank">./github</a></li>
+            <li><a href="https://x.com/vankadhilip" target="_blank">./twitter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>> Navigation</h4>
+          <ul>
+            <li><a href="#roadmap">./roadmap</a></li>
+            <li><a href="#tools">./tools</a></li>
+            <li><a href="#practice">./practice</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-terminal-line">
+          <span class="prompt">robin@bughunter:~$</span>
+          <span class="command">whoami</span>
+        </div>
+        <p>Made with <span class="heart-pulse">💚</span> by <a href="https://x.com/vankadhilip" target="_blank">Dhilip.4x</a></p>
+        <p class="footer-motto">
+          <span class="motto-text">> Happy Hunting!</span>
+          <span class="cursor-blink">_</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Added audio elements for terminal sounds -->
+  <audio id="keypress-sound" preload="auto">
+    <source src="data:audio/wav;base64,UklGRl4AAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YToAAAAAgICAgICAgICAgICAgICAgH9/f39/f39/gICAgICAgICAgICAgICAgICA" type="audio/wav">
+  </audio>
+  <audio id="click-sound" preload="auto">
+    <source src="data:audio/wav;base64,UklGRnoAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YVYAAACAf4B/gH+Af4B/gH9/f39/f39/f4CAgICAgICAgH9/f39/f39/gICAgICAgICAgH9/f39/f39/gICAgICAgICAgH9/f39/f39/gICAgICA" type="audio/wav">
+  </audio>
+  <audio id="boot-sound" preload="auto">
+    <source src="data:audio/wav;base64,UklGRpYBAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YXIBAABkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk" type="audio/wav">
+  </audio>
+  <!-- Added typing sound with multiple variations -->
+  <audio id="type-sound-1" preload="auto">
+    <source src="data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQ4AAAB/gIGAgH+AgICBgH9/gA==" type="audio/wav">
+  </audio>
+  <audio id="type-sound-2" preload="auto">
+    <source src="data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQ4AAABvgIKAgH6BgYCCf36AgA==" type="audio/wav">
+  </audio>
+  <audio id="type-sound-3" preload="auto">
+    <source src="data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQ4AAABxgYGBgH+AgICBgH+Afw==" type="audio/wav">
+  </audio>
+  <audio id="line-complete" preload="auto">
+    <source src="data:audio/wav;base64,UklGRlIAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YS4AAABggICAgICAf39/f39/f4CAgICAgIB/f39/f39/gICAgICAgH9/f39/fw==" type="audio/wav">
+  </audio>
+
+  <script>
+    
+    // ============================================
+    // TYPING SOUND SYSTEM
+    // ============================================
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioContext = null;
+    let soundEnabled = true;
+    let userInteracted = false;
+    let audioBuffer = null;
+
+    // Initialize audio context on first user interaction
+    function initAudio() {
+      if (!audioContext) {
+        audioContext = new AudioContext();
+      }
+      userInteracted = true;
+      // Hide start overlay once interaction occurs
+      const startOverlay = document.getElementById('start-overlay');
+      if (startOverlay) {
+        startOverlay.classList.add('hidden');
+      }
+    }
+
+    // Enable audio on any user interaction
+    // Attach listener to the start-button specifically for the initial interaction
+    const startButton = document.getElementById('start-button');
+    if (startButton) {
+      startButton.addEventListener('click', initAudio, { once: true });
+    }
+
+    // Play typing sound with variation
+    function playTypeSound() {
+      if (!soundEnabled || !userInteracted) return;
+      
+      const soundNum = Math.floor(Math.random() * 3) + 1;
+      const sound = document.getElementById(`type-sound-${soundNum}`);
+      if (sound) {
+        const clone = sound.cloneNode();
+        clone.volume = 0.03 + Math.random() * 0.02;
+        clone.playbackRate = 0.9 + Math.random() * 0.2;
+        clone.play().catch(() => {});
+      }
+    }
+
+    // Play line complete sound
+    function playLineComplete() {
+      if (!soundEnabled || !userInteracted) return;
+      const sound = document.getElementById('line-complete');
+      if (sound) {
+        sound.currentTime = 0;
+        sound.volume = 0.05;
+        sound.play().catch(() => {});
+      }
+    }
+
+    // Play regular sounds
+    function playSound(soundId) {
+      if (!soundEnabled || !userInteracted) return;
+      const sound = document.getElementById(soundId);
+      if (sound) {
+        sound.currentTime = 0;
+        sound.volume = 0.1;
+        sound.play().catch(() => {});
+      }
+    }
+
+    // ============================================
+    // TYPING ANIMATION SYSTEM
+    // ============================================
+    class TerminalTyper {
+      constructor() {
+        this.queue = [];
+        this.isTyping = false;
+        this.baseDelay = 25; // Base delay between characters
+        this.varianceDelay = 15; // Random variance
+      }
+
+      // Add element to typing queue
+      addToQueue(element, options = {}) {
+        this.queue.push({
+          element,
+          originalText: element.textContent || element.innerText,
+          delay: options.delay || 0,
+          onComplete: options.onComplete || null,
+          preserveHTML: options.preserveHTML || false
+        });
+      }
+
+      // Start typing all queued elements
+      async startTyping() {
+        if (this.isTyping) return;
+        this.isTyping = true;
+
+        for (const item of this.queue) {
+          await this.delay(item.delay);
+          await this.typeElement(item);
+        }
+
+        this.isTyping = false;
+      }
+
+      // Type a single element
+      async typeElement(item) {
+        const { element, originalText, onComplete, preserveHTML } = item;
+        
+        // Store original content
+        const text = originalText.trim();
+        
+        // Clear element and add cursor
+        element.innerHTML = '<span class="typing-cursor">▌</span>';
+        element.classList.add('typing-active');
+
+        // Type each character
+        let currentText = '';
+        for (let i = 0; i < text.length; i++) {
+          const char = text[i];
+          currentText += char;
+          
+          // Update element content with cursor
+          element.innerHTML = currentText + '<span class="typing-cursor">▌</span>';
+          
+          // Play typing sound (not for every character to avoid overwhelming)
+          if (i % 2 === 0) {
+            playTypeSound();
+          }
+
+          // Variable delay for natural feel
+          const charDelay = this.getCharDelay(char);
+          await this.delay(charDelay);
+        }
+
+        // Remove cursor and mark as complete
+        element.innerHTML = currentText;
+        element.classList.remove('typing-active');
+        element.classList.add('typing-complete');
+        
+        playLineComplete();
+
+        if (onComplete) onComplete();
+      }
+
+      // Get delay based on character type
+      getCharDelay(char) {
+        // Punctuation gets longer pause
+        if (['.', '!', '?', ',', ';', ':'].includes(char)) {
+          return this.baseDelay * 3 + Math.random() * 100;
+        }
+        // Space gets slight pause
+        if (char === ' ') {
+          return this.baseDelay + Math.random() * 20;
+        }
+        // Normal character
+        return this.baseDelay + Math.random() * this.varianceDelay;
+      }
+
+      delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+    }
+
+    // ============================================
+    // SCROLL-TRIGGERED TYPING
+    // ============================================
+    class ScrollTyper {
+      constructor() {
+        this.observedElements = new Set();
+        this.typedElements = new Set();
+        this.setupObserver();
+      }
+
+      setupObserver() {
+        this.observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !this.typedElements.has(entry.target)) {
+              this.typeElement(entry.target);
+              this.typedElements.add(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.3,
+          rootMargin: '0px 0px -50px 0px'
+        });
+      }
+
+      observe(element) {
+        if (!this.observedElements.has(element)) {
+          // Store original text
+          element.dataset.originalText = element.textContent;
+          element.textContent = '';
+          element.classList.add('scroll-type-pending');
+          
+          this.observedElements.add(element);
+          this.observer.observe(element);
+        }
+      }
+
+      async typeElement(element) {
+        const text = element.dataset.originalText || '';
+        element.classList.remove('scroll-type-pending');
+        element.classList.add('scroll-typing');
+
+        let currentText = '';
+        for (let i = 0; i < text.length; i++) {
+          const char = text[i];
+          currentText += char;
+          element.textContent = currentText;
+
+          // Play sound occasionally
+          if (i % 3 === 0) {
+            playTypeSound();
+          }
+
+          // Variable delay
+          let delay = 15 + Math.random() * 10;
+          if (['.', '!', '?', ','].includes(char)) delay = 80 + Math.random() * 50;
+          if (char === ' ') delay = 20 + Math.random() * 15;
+          
+          await new Promise(r => setTimeout(r, delay));
+        }
+
+        element.classList.remove('scroll-typing');
+        element.classList.add('scroll-typed');
+        playLineComplete();
+      }
+    }
+
+    // ============================================
+    // BOOT SEQUENCE WITH TYPING
+    // ============================================
+    async function runBootSequence() {
+      const bootScreen = document.getElementById('boot-screen');
+      const bootLines = document.querySelectorAll('.boot-line');
+      
+      // Type each boot line
+      for (let i = 0; i < bootLines.length; i++) {
+        const line = bootLines[i];
+        const text = line.textContent;
+        line.textContent = '';
+        line.style.opacity = '1';
+
+        // Type the line
+        for (let j = 0; j < text.length; j++) {
+          line.textContent += text[j];
+          if (j % 2 === 0) playTypeSound();
+          await new Promise(r => setTimeout(r, 20 + Math.random() * 15));
+        }
+        
+        playLineComplete();
+        await new Promise(r => setTimeout(r, 200));
+      }
+
+      // Wait a bit then fade out
+      await new Promise(r => setTimeout(r, 800));
+      bootScreen.classList.add('fade-out');
+      
+      setTimeout(() => {
+        bootScreen.style.display = 'none';
+        // Start main content typing after boot
+        startMainTyping();
+      }, 500);
+    }
+
+    // ============================================
+    // MAIN CONTENT TYPING ANIMATION
+    // ============================================
+    async function startMainTyping() {
+      const typer = new TerminalTyper();
+      
+      // Hero section elements to type
+      const heroTitle = document.querySelector('.hero-title');
+      const heroSubtitle = document.querySelector('.hero-subtitle');
+      
+      // Remove default typewriter animation from subtitle
+      if (heroSubtitle) {
+        heroSubtitle.classList.remove('typewriter');
+        heroSubtitle.style.borderRight = 'none';
+        heroSubtitle.style.whiteSpace = 'normal';
+        heroSubtitle.style.animation = 'none';
+        heroSubtitle.style.width = 'auto';
+      }
+
+      // Type hero elements
+      if (heroTitle) {
+        const titleText = heroTitle.textContent;
+        heroTitle.innerHTML = '';
+        
+        for (let i = 0; i < titleText.length; i++) {
+          heroTitle.innerHTML += titleText[i];
+          if (i % 2 === 0) playTypeSound();
+          await new Promise(r => setTimeout(r, 30 + Math.random() * 20));
+        }
+        playLineComplete();
+      }
+
+      await new Promise(r => setTimeout(r, 300));
+
+      if (heroSubtitle) {
+        const subtitleText = heroSubtitle.dataset.originalText || heroSubtitle.textContent;
+        heroSubtitle.innerHTML = '';
+        
+        for (let i = 0; i < subtitleText.length; i++) {
+          heroSubtitle.innerHTML += subtitleText[i];
+          if (i % 3 === 0) playTypeSound();
+          await new Promise(r => setTimeout(r, 20 + Math.random() * 15));
+        }
+        playLineComplete();
+      }
+
+      // Initialize scroll-based typing for other elements
+      initScrollTyping();
+    }
+
+    // ============================================
+    // SCROLL-BASED TYPING FOR SECTIONS
+    // ============================================
+    function initScrollTyping() {
+      const scrollTyper = new ScrollTyper();
+
+      // Section titles
+      document.querySelectorAll('.section-title').forEach(el => {
+        scrollTyper.observe(el);
+      });
+
+      // Section subtitles
+      document.querySelectorAll('.section-subtitle').forEach(el => {
+        scrollTyper.observe(el);
+      });
+
+      // Card titles (h3 in cards)
+      document.querySelectorAll('.reality-card h3, .mindset-card h3, .tool-card h3, .hunter-name, .resource-card h3').forEach(el => {
+        scrollTyper.observe(el);
+      });
+    }
+
+    // ============================================
+    // CONTINUOUS AMBIENT TYPING SOUNDS
+    // ============================================
+    let ambientTypingInterval = null;
+
+    function startAmbientTyping() {
+      if (ambientTypingInterval) return;
+      
+      // Random occasional typing sounds in background
+      ambientTypingInterval = setInterval(() => {
+        if (Math.random() > 0.7 && userInteracted) {
+          playTypeSound();
+        }
+      }, 500);
+    }
+
+    function stopAmbientTyping() {
+      if (ambientTypingInterval) {
+        clearInterval(ambientTypingInterval);
+        ambientTypingInterval = null;
+      }
+    }
+
+    // ============================================
+    // MATRIX CANVAS
+    // ============================================
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const charArray = chars.split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    
+    for (let i = 0; i < columns; i++) {
+      drops[i] = 1;
+    }
+    
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = '#00ff41';
+      ctx.font = fontSize + 'px monospace';
+      
+      for (let i = 0; i < drops.length; i++) {
+        const text = charArray[Math.floor(Math.random() * charArray.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    
+    setInterval(drawMatrix, 50);
+    
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // ============================================
+    // COUNTER ANIMATION
+    // ============================================
+    function animateCounter(element) {
+      const target = parseInt(element.getAttribute('data-target'));
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          element.textContent = target + '+';
+          clearInterval(timer);
+          playLineComplete();
+        } else {
+          element.textContent = Math.floor(current);
+          if (Math.random() > 0.8) playTypeSound();
+        }
+      }, 16);
+    }
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    });
+    
+    document.querySelectorAll('.counter').forEach(el => {
+      counterObserver.observe(el);
+    });
+
+    // ============================================
+    // NAVIGATION
+    // ============================================
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      navToggle.classList.toggle('active');
+      playSound('click-sound');
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+      });
+    });
+
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // ============================================
+    // SCROLL ANIMATIONS
+    // ============================================
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reality-card, .mindset-card, .roadmap-stage, .tool-card, .practice-card, .hunter-card, .resource-card, .quote-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Glitch effects
+    document.querySelectorAll('.glitch-hover').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        el.classList.add('glitching');
+        setTimeout(() => el.classList.remove('glitching'), 300);
+      });
+    });
+
+    // Interactive element sounds
+    document.querySelectorAll('[data-sound="click"]').forEach(el => {
+      el.addEventListener('click', () => playSound('click-sound'));
+    });
+    
+    document.querySelectorAll('.btn, .nav-link, a').forEach(el => {
+      el.addEventListener('mouseenter', () => playSound('keypress-sound'));
+    });
+
+    // ============================================
+    // INITIALIZE ON LOAD
+    // ============================================
+    window.addEventListener('load', () => {
+      // Run boot sequence (which will trigger main typing after)
+      runBootSequence();
+      
+      // Start ambient typing sounds after a delay
+      setTimeout(() => {
+        startAmbientTyping();
+      }, 5000);
+    });
+
+    // Floating terminals animation
+    const floatingTerminals = document.querySelectorAll('.mini-terminal');
+    floatingTerminals.forEach((terminal, index) => {
+      terminal.style.animationDelay = `${index * 0.5}s`;
+    });
+  </script>
+  <script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    }, false);
+
+    // Optional: Disable common keyboard shortcuts like Ctrl+C, Ctrl+U, Ctrl+S
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'i')) {
+            e.preventDefault();
+        }
+    });
+</script>
+</body>
+
+</html>
